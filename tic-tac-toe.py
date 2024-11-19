@@ -32,12 +32,15 @@ while True:
     print(f'O, ваш ход! Напишите координату, в которую хотите поставить О.')
     # Заметка: координата вводится в формате "x, y".
     move = input()
-    x = int(move[0])
-    y = int(move[-1])
+    #Проверка ввода нечислового значения
+    if not move[0].isdigit() or not move[-1].isdigit():
+        break
+    else:
+        x = int(move[0])
+        y = int(move[-1])
     # Проверяем, занята ли координата
     while True:
         if field[x+1][y+1] != '-':
-            print("Невозможно сделать ход! Выберите другую координату.")
             continue
         else:
             field[x+1][y+1] = "O"
@@ -47,14 +50,16 @@ while True:
     if check_win():
         break
 
-    print(f'X, ваш ход! Напишите координату, в которую хотите поставить О.')
+    print(f'X, ваш ход! Напишите координату, в которую хотите поставить X.')
     move = input()
-    x = int(move[0])
-    y = int(move[-1])
+    if not move[0].isdigit() or not move[-1].isdigit():
+        break
+    else:
+        x = int(move[0])
+        y = int(move[-1])
     # Проверяем, занята ли координата
     while True:
         if field[x + 1][y + 1] != '-':
-            print("Невозможно сделать ход! Выберите другую координату.")
             continue
         else:
             field[x + 1][y + 1] = "X"
